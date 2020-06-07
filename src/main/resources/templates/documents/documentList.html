@@ -1,0 +1,27 @@
+<div th:replace="parts/header"></div>
+
+<h3>Список всех документов</h3>
+
+<div align="center" id="message" th:class="${status}">[[${message}]]</div>
+
+Всего документов: <b id="countDocuments">[[${countDocuments}]]</b>
+
+<table id="mainTable" class="users_table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>id</th>
+            <th>Перейти к документу</th>
+            <th th:if="${canDoActions == true}">Удалить документ</th>
+        </tr>
+    </thead>
+    <tr class="documentTr" th:each="document, state : ${documentList}">
+        <td class="numberTd">[[${state.index} + 1]]</td>
+        <td>[[${document.id}]]</td>
+        <td><a target="_blank" th:href="@{/document/} + ${document.src}">Перейти ([[${document.src}]])</a></td>
+        <td th:if="${canDoActions == true}"><a href="javascript://" th:onclick="@{deleteDocument(} + ${document.id} + @{, 3000, $(this).parents('tr'));}">Удалить</a></td>
+    </tr>
+</table>
+
+
+<div th:replace="parts/footer"></div>

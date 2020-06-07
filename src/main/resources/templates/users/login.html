@@ -1,0 +1,38 @@
+<div th:replace="parts/header"></div>
+
+<h3>Авторизация на сервисе документооборота</h3>
+
+<div th:if="${param.error != null}" class="error">
+    [[${session['SPRING_SECURITY_LAST_EXCEPTION'].message}]]
+</div>
+
+
+<div th:if="${currentUser != null}">
+    Вы уже авторизованны!
+</div>
+
+<div th:if="${currentUser == null}">
+
+    <form action="/login" method="post">
+        <table>
+            <tr>
+                <td><label>Логин:</label></td>
+                <td><input type="text" name="username" value="" placeholder="Username" /></td>
+            </tr>
+            <tr>
+                <td><label>Пароль:</label></td>
+                <td><input type="password" name="password" placeholder="Password" /></td>
+            </tr>
+
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+
+            <tr>
+                <td><input type="reset" value="Сбросить"></td>
+                <td><input type="submit" value="Войти на сервис"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div th:replace="parts/footer"></div>

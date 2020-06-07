@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="description" content="Сервис документооборота"/>
+
+    <title>[[${title}]]</title>
+
+
+    <meta id="tokenValue" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="tokenHeaderName" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css"/>
+    
+    <script src="/static/js/jquery_3.1.1_min.js"></script>
+
+    <script src="/static/js/main.js"></script>
+        
+</head>
+<body>
+
+    <div id="wrapper" align="center">
+        <div id="container" align="left">
+
+    
+            <div align="center"><h2><a href="/">Сервис документооборота</a></h2></div>
+
+
+            <div id="nav">
+
+                <b><a class="navItem" href="/">Главная</a></b>
+
+                <div class="noneUser" th:if="${currentUser == null}">
+                    <a class="navItem" href="/login">Войти на сервис</a>
+                </div>
+
+                <th:block th:if="${currentUser != null}">
+
+                    <b>
+                    <a class="navItem" href="/documents">Все документы (REST)</a>
+                    <a class="navItem" href="/documentsAll">Все документы</a>
+
+                    <th:block th:if="${canDoActions == true}">
+                        <a class="navItem" href="/documents/add">Добавить документ</a>
+                    </th:block>
+
+                    </b>
+
+                    <div class="currentUser">
+
+                        <div id="userAll">
+                            <a id="myProfile" href="javascript://">Вы вошли как: <b>[[${currentUser.username}]]</b></a>
+
+                            <a href="javascript://" onclick="$('#logout_form').submit()">Выйти</a>
+
+                            <form id="logout_form" style="display:none" action="/logout" method="post">
+                                <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                                <button type="submit">Выйти</button>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                </th:block>
+
+            </div>

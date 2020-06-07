@@ -1,0 +1,29 @@
+<div th:replace="parts/header"></div>
+
+<h3>Добавление нового документа</h3>
+
+<div align="center" id="message" th:class="${status}">[[${message}]]<br></div>
+
+<div id="addDocument">
+
+    <form id="addDoc" name="addDoc" class="AjaxForm" method="post" enctype="multipart/form-data">
+
+        <div><b>Выбрать документ</b></div>
+        <br>
+        <input type="file" name="file" id="customFile">
+        <br><br>
+
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+
+        <table>
+            <tr>
+                <td><input type="reset" value="Сбросить"></td>
+                <td><input type="submit" value="Загрузить документ"></td>
+            </tr>
+        </table>
+
+    </form>
+
+</div>
+
+<div th:replace="parts/footer"></div>

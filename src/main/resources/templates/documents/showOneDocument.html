@@ -1,0 +1,14 @@
+<div th:replace="parts/header"></div>
+
+<div th:if="${document == null}">
+    <b>Документ не найден!</b>
+</div>
+
+
+<div th:if="${document != null}">
+    <h3>Просмотр документа ([[${document.id}]])</h3>
+    <iframe th:src="@{/static/documents/} + ${document.src}"></iframe>
+</div>
+
+
+<div th:replace="parts/footer"></div>
