@@ -27,7 +27,7 @@
         <hsql_db.version>2.3.4</hsql_db.version>
 
         <!--jsoup-->
-        <jsoup.version>1.13.1</jsoup.version>
+        <jsoup.version>1.14.2</jsoup.version>
 
     </properties>
 
