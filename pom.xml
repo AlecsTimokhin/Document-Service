@@ -20,7 +20,7 @@
         <java.version>11</java.version>
 
         <!--JSON-->
-        <jackson-json.version>2.10.3</jackson-json.version>
+        <jackson-json.version>2.12.7.1</jackson-json.version>
 
         <!--DB-->
         <derby-version>10.13.1.1</derby-version>
